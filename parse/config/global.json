@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Dencity": {
+            "applicationId": "QpZKRJLiy7baIH1HjkMPGxSsEgFmAzc9tq9PwYTC", 
+            "masterKey": "aTL2h80s832NwS3GAlrsHqICloyD48juZe4xQjfJ"
+        }, 
+        "_default": {
+            "link": "Dencity"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.0"
+    }
+}

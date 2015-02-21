@@ -1,0 +1,24 @@
+dependencies: \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPAnimator.mm \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPAnimator.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPAnimatorPrivate.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPAnimation.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/Headers/Build/pop/POPAnimationTracer.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/Headers/Build/pop/POPAnimationEvent.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/Headers/Build/pop/POPGeometry.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPAnimationExtras.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/Headers/Build/pop/POPDefines.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/Headers/Build/pop/POPSpringAnimation.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/Headers/Build/pop/POPPropertyAnimation.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/Headers/Build/pop/POPAnimatableProperty.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPBasicAnimationInternal.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPBasicAnimation.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPPropertyAnimationInternal.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPAnimationInternal.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPAnimationRuntime.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPVector.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPMath.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPAnimationTracerInternal.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPSpringSolver.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPAction.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Pods/pop/pop/POPDecayAnimation.h
