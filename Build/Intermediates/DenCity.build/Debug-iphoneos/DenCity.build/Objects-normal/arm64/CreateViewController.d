@@ -31,4 +31,7 @@ dependencies: \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Parse.framework/Headers/PFPush.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Parse.framework/Headers/PFTwitterUtils.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Parse.framework/Headers/PF_Twitter.h \
-  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/FXBlurView/FXBlurView.h
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/FXBlurView/FXBlurView.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DACircularProgress/DCUtility.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlace.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlaceComment.h

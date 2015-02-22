@@ -281,13 +281,6 @@ gender was picked and if there is a profile picture*/
         textField.text = [df stringFromDate:picker.date];
     }
     if (textField == nameField){
-        if ([DCUtility containsIllegalCharacters:nameField.text]) {
-            [self showAlertViewWithErrorMessage:@"Name contains illegal characters"];
-            nameField.textColor = [UIColor redColor];
-        }
-        else{
-            nameField.textColor = [UIColor whiteColor];
-        }
         [textField resignFirstResponder];
     }
 }

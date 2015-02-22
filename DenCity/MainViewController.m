@@ -274,7 +274,7 @@ static const CGFloat kCellHeight = 200;
             [query whereKey:@"location" nearGeoPoint:currentLocation];
             break;
         case FilterPopulation:
-            [query orderByAscending:@"population"];
+            [query orderByDescending:@"population"];
         default:
             break;
     }
@@ -360,7 +360,7 @@ static const CGFloat kCellHeight = 200;
             [query whereKey:@"location" nearGeoPoint:currentLocation];
             break;
         case FilterPopulation:
-            [query orderByAscending:@"population"];
+            [query orderByDescending:@"population"];
         default:
             break;
     }
@@ -382,7 +382,7 @@ static const CGFloat kCellHeight = 200;
 
 #pragma mark - Helper Methods
 
-/*helper method that is synergizes with NSUserDefaults 
+/*helper method that synergizes with NSUserDefaults
  *This is done because NSUserDefaults cannot store an enum
  and in turn will store an integer
  *Botht these methods convert that integer into their respective

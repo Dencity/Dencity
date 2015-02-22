@@ -52,7 +52,6 @@ dependencies: \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlaceViewController.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlace.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlaceComment.h \
-  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCUserPointer.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCSearchViewController.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCLocationManager.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DACircularProgress/DCUtility.h

@@ -34,5 +34,4 @@ dependencies: \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Parse.framework/Headers/PF_Twitter.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlace.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlaceComment.h \
-  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCUserPointer.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/MarqueeLabel.h
