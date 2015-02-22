@@ -19,7 +19,7 @@
 #import "FXBlurView.h"
 
 
-@interface LoginViewController (){
+@interface LoginViewController () <UINavigationControllerDelegate>{
     UIImageView *imageView;
 }
 
@@ -51,6 +51,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationController.delegate = self;
     
     imageView = [[UIImageView alloc]initWithFrame:self.view.frame];
     imageView.image = [[UIImage imageNamed:@"city"] blurredImageWithRadius:30 iterations:15 tintColor:[UIColor clearColor]];
@@ -164,6 +166,12 @@
         [self presentViewController:dv animated:YES completion:nil];
         [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[navigationController.navigationBar subviews] makeObjectsPerformSelector:@selector(setNeedsDisplay)];
+    });
 }
 
 @end

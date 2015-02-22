@@ -100,6 +100,8 @@
     NSLog(@"Selected");
     DCPlace *tempPlace = _internalArray[indexPath.row];
     DCPlaceViewController *pv = [[DCPlaceViewController alloc]initWithPlace:tempPlace.name];
+    [self.mm_drawerController setRightDrawerViewController:pv];
+    [self.mm_drawerController openDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

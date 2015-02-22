@@ -27,6 +27,9 @@
 + (void)user:(PFUser*)user shouldEnterPlace:(DCPlace*)place;
 + (void)user:(PFUser*)user shouldLeavePlace:(DCPlace*)place;
 
+/*Shorcut to check sign up strings from illegal charaters*/
++ (BOOL)containsIllegalCharacters:(NSString*)string;
+
 @end
 
 @interface UIImage (DCImageUtilities)

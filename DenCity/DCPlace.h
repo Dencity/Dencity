@@ -8,7 +8,6 @@
 
 #import <Parse/Parse.h>
 #import "DCPlaceComment.h"
-#import "DCUserPointer.h"
 
 @interface DCPlace : PFObject <PFSubclassing, CLLocationManagerDelegate>
 

@@ -10,6 +10,7 @@
 #import "DUIButton.h"
 #import "Create3ViewController.h"
 #import "FXBlurView.h"
+#import "DCUtility.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -111,7 +112,7 @@
     pB = [[DUIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2 - 30, self.view.frame.size.height - 75, 60, 60) fontSize:14 whiteValue:100];
     pB.layer.cornerRadius = 60/2;
     pB.layer.borderColor = [UIColor whiteColor].CGColor;
-    pB.layer.borderWidth = 4.0f;
+    pB.layer.borderWidth = .5f;
     [pB setTitle:@"Photo" forState:UIControlStateNormal];
     [pB addTarget:self action:@selector(addPhoto) forControlEvents:UIControlEventTouchUpInside];
     pB.clipsToBounds = YES;
@@ -280,6 +281,13 @@ gender was picked and if there is a profile picture*/
         textField.text = [df stringFromDate:picker.date];
     }
     if (textField == nameField){
+        if ([DCUtility containsIllegalCharacters:nameField.text]) {
+            [self showAlertViewWithErrorMessage:@"Name contains illegal characters"];
+            nameField.textColor = [UIColor redColor];
+        }
+        else{
+            nameField.textColor = [UIColor whiteColor];
+        }
         [textField resignFirstResponder];
     }
 }
@@ -288,19 +296,23 @@ gender was picked and if there is a profile picture*/
 
 //handles what happens when the actionsheet buttons are selected
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //creating the image picker
     imagePicker = [[UIImagePickerController alloc]init];
     imagePicker.delegate = self;
     imagePicker.allowsEditing = YES;
     switch (buttonIndex) {
         case 2:
+            //user wants to select an image from the photo library
             imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             [self presentViewController:imagePicker animated:YES completion:nil];
             break;
         case 1:
+            //user wants to take a picture
             imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
             [self presentViewController:imagePicker animated:YES completion:nil];
             break;
         case 0:
+            //user wants to get rid of the current image
             [pB setImage:nil forState:UIControlStateNormal];
             [pB setTitle:@"Photo" forState:UIControlStateNormal];
             break;
@@ -313,6 +325,7 @@ gender was picked and if there is a profile picture*/
 
 //when the image picker controller is done, it will set the picture to the button
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    //user selected an image from the library --> Set that image
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     [self dismissViewControllerAnimated:YES completion:^(void){
         [pB setImage:image forState:UIControlStateNormal];

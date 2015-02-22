@@ -10,6 +10,7 @@
 #import "Create2ViewController.h"
 #import <Parse/Parse.h>
 #import "FXBlurView.h"
+#import "DCUtility.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -151,7 +152,6 @@
 - (void)showAlertViewWithErrorMessage:(NSString*)error{
     
     if (animating) {
-        [self performSelector:@selector(showAlertViewWithErrorMessage:) withObject:error afterDelay:2];
         return;
     }
     
@@ -266,6 +266,10 @@
             return;
         }
     }];
+    if ([DCUtility containsIllegalCharacters:usernameField.text]) {
+        [self showAlertViewWithErrorMessage:@"Username contains illegal characters"];
+        username = NO;
+    }
     return YES;
 }
 
@@ -294,6 +298,9 @@
     if (count == 0) {
         passwordField.textColor = [UIColor redColor];
         return @"Password must contain at least 1 number";
+    }
+    if ([DCUtility containsIllegalCharacters:password]) {
+        return @"Password contains illegal characters";
     }
     return nil;
 }

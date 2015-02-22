@@ -17,7 +17,6 @@
 		BF0512D1195FC16600112F77 /* LogIn2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0512D0195FC16600112F77 /* LogIn2ViewController.m */; };
 		BF0512D31960EA0100112F77 /* city@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0512D21960EA0100112F77 /* city@2x.png */; };
 		BF087FDF19D924730043B17F /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF087FDE19D924730043B17F /* PlaceViewController.m */; };
-		BF08B3A41A8FD3D900062643 /* DCUserPointer.m in Sources */ = {isa = PBXBuildFile; fileRef = BF08B3A31A8FD3D900062643 /* DCUserPointer.m */; };
 		BF08B3A81A92835B00062643 /* DCUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = BF08B3A71A92835B00062643 /* DCUtility.m */; };
 		BF1F24B41A7451BA00534004 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1F24B31A7451BA00534004 /* Accounts.framework */; };
 		BF23A21719BA18060073F9E8 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF23A21619BA18060073F9E8 /* search@2x.png */; };
@@ -149,8 +148,6 @@
 		BF0512D21960EA0100112F77 /* city@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "city@2x.png"; sourceTree = "<group>"; };
 		BF087FDD19D924730043B17F /* PlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceViewController.h; sourceTree = "<group>"; };
 		BF087FDE19D924730043B17F /* PlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceViewController.m; sourceTree = "<group>"; };
-		BF08B3A21A8FD3D900062643 /* DCUserPointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCUserPointer.h; sourceTree = "<group>"; };
-		BF08B3A31A8FD3D900062643 /* DCUserPointer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCUserPointer.m; sourceTree = "<group>"; };
 		BF08B3A61A92835B00062643 /* DCUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DCUtility.h; path = DACircularProgress/DCUtility.h; sourceTree = "<group>"; };
 		BF08B3A71A92835B00062643 /* DCUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DCUtility.m; path = DACircularProgress/DCUtility.m; sourceTree = "<group>"; };
 		BF1F24B31A7451BA00534004 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -489,9 +486,8 @@
 		BF0512C8195FB28C00112F77 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BFCB7F621A9941050037812A /* DCRecentSearchView */,
 				BF91376D1A842824004A5F31 /* DCPlaceCells */,
-				BFB5C88F1A7C74DB00FAC99B /* DCRecentSearchView.h */,
-				BFB5C88E1A7C74DB00FAC99B /* DCRecentSearchView.m */,
 				BFFDA13F1A61A4C50002028D /* MYBlurIntroductionView */,
 				BFBA35381A4619BA007702BF /* TLYShyNavBar */,
 				BF5EEB1C1A25898C00615744 /* TableViewCells */,
@@ -695,8 +691,6 @@
 				BFC196D61A808B97009771AE /* DCPlaceComment.m */,
 				BFC196DB1A815E4C009771AE /* DCPlace.h */,
 				BFC196DC1A815E4C009771AE /* DCPlace.m */,
-				BF08B3A21A8FD3D900062643 /* DCUserPointer.h */,
-				BF08B3A31A8FD3D900062643 /* DCUserPointer.m */,
 			);
 			name = "Parse Subclasses";
 			sourceTree = "<group>";
@@ -735,6 +729,15 @@
 				BF8522DC1A71EB5900122A59 /* DCSearchViewController.m */,
 			);
 			name = "Main VC's";
+			sourceTree = "<group>";
+		};
+		BFCB7F621A9941050037812A /* DCRecentSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				BFB5C88F1A7C74DB00FAC99B /* DCRecentSearchView.h */,
+				BFB5C88E1A7C74DB00FAC99B /* DCRecentSearchView.m */,
+			);
+			name = DCRecentSearchView;
 			sourceTree = "<group>";
 		};
 		BFE424A219ECF4DE00C8F9C7 /* Control */ = {
@@ -981,7 +984,6 @@
 				BF08B3A81A92835B00062643 /* DCUtility.m in Sources */,
 				BF58467419F8BE2A008BF04E /* JPBParallaxBlurViewController.m in Sources */,
 				BF9137701A8428EE004A5F31 /* DCPopulationPlaceCell.m in Sources */,
-				BF08B3A41A8FD3D900062643 /* DCUserPointer.m in Sources */,
 				BF43157E196402F00013CC8B /* Create2ViewController.m in Sources */,
 				BF65DEF019A3E22E00ADE397 /* MenuViewController.m in Sources */,
 				BFFDA1691A61FA800002028D /* DCTransitionAnimator.m in Sources */,

@@ -224,7 +224,7 @@ static const CGFloat kCellHeight = 200;
     [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
     //make the locationManager start updating the location
-    [locationManager getUserLocationWithInterval:10];
+    [locationManager getUserLocationWithInterval:20];
     
     /* Library code */
     self.shyNavBarManager.scrollView = (UIScrollView*)self.tableView;
@@ -615,7 +615,6 @@ static const CGFloat kCellHeight = 200;
                 /*Add user to the place*/
                 [DCUtility user:[PFUser currentUser] shouldEnterPlace:closestPlace];
                 
-                NSLog(@"User has arrvied at %@", closestPlace.name);
                 return;
             }
             else if (metersToNearestPlace > 10.0 && ![currentPlaceString isEqualToString:@"N/A"]){
@@ -633,7 +632,6 @@ static const CGFloat kCellHeight = 200;
                 /*Remove user from the place*/
                 [DCUtility user:[PFUser currentUser] shouldLeavePlace:closestPlace];
                 
-                NSLog(@"User is leaving %@", closestPlace.name);
                 return;
             }
         }
@@ -826,6 +824,12 @@ static const CGFloat kCellHeight = 200;
     }
     
     lastContentOffset = delta;
+    
+    if (delta < 0) {
+        CGRect rect = self.refreshControl.frame;
+        rect.origin.y += delta/4;
+        [self.refreshControl setFrame:rect];
+    }
 }
 
 @end

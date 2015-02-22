@@ -1,18 +1,15 @@
 PODS:
-  - AFDropdownNotification (1.1)
-  - CorePlot (1.5.1)
+  - CWStatusBarNotification (2.2.2)
   - Doppelganger (1.3)
   - pop (1.0.7)
 
 DEPENDENCIES:
-  - AFDropdownNotification (~> 1.0)
-  - CorePlot (~> 1.4)
+  - CWStatusBarNotification (~> 2.2.2)
   - Doppelganger
   - pop (~> 1.0)
 
 SPEC CHECKSUMS:
-  AFDropdownNotification: c644013d063e3b5efed53555dee92c889f0f3081
-  CorePlot: b15cb1a9a687b9576545104248d6e22033e678bb
+  CWStatusBarNotification: 7e43716355830c26124eae9b91c4434dfa2a6a73
   Doppelganger: 5f8ece005622fdcb01fe3e56e0ed7cad2fc4d5cb
   pop: 2f14a1ea61339767af9e66741b418c831b3844df
 

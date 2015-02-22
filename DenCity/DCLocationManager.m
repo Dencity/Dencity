@@ -9,7 +9,7 @@
 #import "DCLocationManager.h"
 
 int const kMaxBGTime = 170;
-int const kTimeToGetLocations = 3;
+int const kTimeToGetLocations = .5;
 
 @interface DCLocationManager (){
     UIBackgroundTaskIdentifier bgTask;

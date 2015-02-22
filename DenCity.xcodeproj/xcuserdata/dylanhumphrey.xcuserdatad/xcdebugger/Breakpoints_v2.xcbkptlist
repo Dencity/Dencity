@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DenCity/CreateViewController.m"
-            timestampString = "446111369.714482"
+            timestampString = "446260409.611385"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "-checkPassword"
             landmarkType = "5">
          </BreakpointContent>

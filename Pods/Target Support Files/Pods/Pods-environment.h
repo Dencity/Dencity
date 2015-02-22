@@ -6,17 +6,11 @@
 // project.
 
 
-// AFDropdownNotification
-#define COCOAPODS_POD_AVAILABLE_AFDropdownNotification
-#define COCOAPODS_VERSION_MAJOR_AFDropdownNotification 1
-#define COCOAPODS_VERSION_MINOR_AFDropdownNotification 1
-#define COCOAPODS_VERSION_PATCH_AFDropdownNotification 0
-
-// CorePlot
-#define COCOAPODS_POD_AVAILABLE_CorePlot
-#define COCOAPODS_VERSION_MAJOR_CorePlot 1
-#define COCOAPODS_VERSION_MINOR_CorePlot 5
-#define COCOAPODS_VERSION_PATCH_CorePlot 1
+// CWStatusBarNotification
+#define COCOAPODS_POD_AVAILABLE_CWStatusBarNotification
+#define COCOAPODS_VERSION_MAJOR_CWStatusBarNotification 2
+#define COCOAPODS_VERSION_MINOR_CWStatusBarNotification 2
+#define COCOAPODS_VERSION_PATCH_CWStatusBarNotification 2
 
 // Doppelganger
 #define COCOAPODS_POD_AVAILABLE_Doppelganger

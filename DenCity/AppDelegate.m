@@ -17,8 +17,10 @@
 #import <Parse/Parse.h>
 #import "DCPlace.h"
 #import "DCUtility.h"
-#import "DCUserPointer.h"
 #import "DCPlaceComment.h"
+#import <CWStatusBarNotification/CWStatusBarNotification.h>
+
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface AppDelegate ()
 
@@ -34,7 +36,6 @@
     
     [DCPlace registerSubclass];
     [DCPlaceComment registerSubclass];
-    [DCUserPointer registerSubclass];
     
     [Parse setApplicationId:@"QpZKRJLiy7baIH1HjkMPGxSsEgFmAzc9tq9PwYTC"
                   clientKey:@"sAgh74Fq3a4adz0AaS0MUL1iLbNfK3lhLEXM0BrJ"];
@@ -81,42 +82,21 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
-    if ([notification.alertBody containsString:@"entering"]) {
-        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Entering Place" message:[NSString stringWithFormat:@"You have entered %@", notification.userInfo[@"name"]] preferredStyle:UIAlertControllerStyleAlert];
-        [controller addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            
-        }]];/*
-        [controller addAction:[UIAlertAction actionWithTitle:@"Enter" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-            PFQuery *query = [DCPlace query];
-            [query whereKey:@"name" equalTo:notification.userInfo[@"name"]];
-            [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                if (!error){
-                    DCPlace *place = (DCPlace*)object;
-                    [place addPerson:[PFUser currentUser]];
-                    NSLog(@"successfully added person");
-                }
-            }];
-        }]];*/
-        [self.window.rootViewController presentViewController:controller animated:YES completion:nil];
+    if ([notification.alertBody containsString:@"arrived"]) {
+        CWStatusBarNotification *note = [CWStatusBarNotification new];
+        note.notificationLabelBackgroundColor = UIColorFromRGB(0x400040);
+        note.notificationLabelTextColor = [UIColor whiteColor];
+        note.notificationAnimationInStyle = CWNotificationAnimationStyleLeft;
+        note.notificationAnimationOutStyle = CWNotificationAnimationStyleRight;
+        [note displayNotificationWithMessage:[NSString stringWithFormat:@"You have arrived at %@", notification.userInfo[@"name"]] forDuration:3];
     }
     else{
-        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Leaving Place" message:[NSString stringWithFormat:@"You have left %@", notification.userInfo[@"name"]] preferredStyle:UIAlertControllerStyleAlert];
-        [controller addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        
-        }]];
-        /*
-        [controller addAction:[UIAlertAction actionWithTitle:@"Leave" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-            PFQuery *query = [DCPlace query];
-            [query whereKey:@"name" equalTo:notification.userInfo[@"name"]];
-            [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                if (!error){
-                    DCPlace *place = (DCPlace*)object;
-                    [place removePerson:[PFUser currentUser]];
-                    NSLog(@"successfully removed person");
-                }
-            }];
-        }]];*/
-        [self.window.rootViewController presentViewController:controller animated:YES completion:nil];
+        CWStatusBarNotification *note = [CWStatusBarNotification new];
+        note.notificationLabelBackgroundColor = UIColorFromRGB(0x400040);
+        note.notificationLabelTextColor = [UIColor whiteColor];
+        note.notificationAnimationInStyle = CWNotificationAnimationStyleLeft;
+        note.notificationAnimationOutStyle = CWNotificationAnimationStyleRight;
+        [note displayNotificationWithMessage:[NSString stringWithFormat:@"You have left %@", notification.userInfo[@"name"]] forDuration:3];
     }
 }
 

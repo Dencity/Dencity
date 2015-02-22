@@ -7,7 +7,6 @@
 //
 
 #import "DCPlace.h"
-#import "DCUserPointer.h"
 #import <Parse/PFObject+Subclass.h>
 
 @interface DCPlace (){
@@ -56,9 +55,9 @@
     NSMutableArray *arr = [NSMutableArray arrayWithArray:self.people];
     [arr addObject:user.objectId];
     self.people = arr;
-    [self incrementKey:@"population"];
+    self.population = [NSNumber numberWithInt:[self.population intValue] + 1];
     [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!succeeded) {
+        if (!succeeded || error) {
             [self saveEventually];
         }
     }];}
@@ -70,7 +69,7 @@
         self.people = arr;
         self.population = [NSNumber numberWithInt:(MAX([self.population intValue] - 1, 0))];
         [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!succeeded) {
+            if (!succeeded || error) {
                 [self saveEventually];
             }
         }];
