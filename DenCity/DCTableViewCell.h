@@ -12,7 +12,7 @@
 
 @interface DCTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) PFImageView *placeImageView;
+@property (nonatomic, strong) UIImageView *placeImageView;
 
 @property (nonatomic, strong) UIImageView *typeImageView;
 

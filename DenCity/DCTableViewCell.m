@@ -78,7 +78,7 @@
     view.backgroundColor = [UIColor colorWithWhite:1 alpha:1];
     self.backgroundColor = [UIColor clearColor];
     
-    self.placeImageView = [[PFImageView alloc]initWithFrame:originalPlaceFrame];
+    self.placeImageView = [[UIImageView alloc]initWithFrame:originalPlaceFrame];
     self.placeImageView.layer.cornerRadius = 3;
     self.placeImageView.clipsToBounds = YES;
     self.placeImageView.backgroundColor = [UIColor lightGrayColor];

@@ -30,6 +30,7 @@
 #import "DCPlace.h"
 #import "DCLocationManager.h"
 #import "DCUtility.h"
+#import "DCSwitch.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -64,7 +65,7 @@
     UILabel *noResultsLabel;
     
     //the segemented control that allows filtering
-    UISegmentedControl *control;
+    DCSwitch *control;
     
     //a boolean value to tell if the view controller is loading first
     BOOL firstLoad;
@@ -75,6 +76,9 @@
     
     //integer to keep some things safe
     int safeIndex;
+    
+    //integer to keep track of the last displayed index
+    int lastIndex;
 }
 
 //the main array that holds all of the places
@@ -186,11 +190,24 @@ static const CGFloat kCellHeight = 200;
     [self.view addSubview:errorLabel];
     
     //segmented control that allows the user to switch between sorting via location or population
-    control = [[UISegmentedControl alloc]initWithFrame:CGRectMake(5, 5,self.view.frame.size.width - 30, 30)];
-    control.tintColor = [UIColor blackColor];
-    [control insertSegmentWithTitle:@"Population" atIndex:0 animated:NO];
-    [control insertSegmentWithTitle:@"Location" atIndex:0 animated:NO];
-    [control addTarget:self action:@selector(filterChanged:) forControlEvents:UIControlEventValueChanged];
+    control = [DCSwitch switchWithStringsArray:@[@"Location", @"Population"]];
+    control.frame = CGRectMake(5, 5,self.view.frame.size.width - 30, 30);
+    control.backgroundColor = [UIColor colorWithWhite:.15 alpha:1];
+    control.sliderColor = [UIColor whiteColor];
+    control.labelTextColorInsideSlider = [UIColor colorWithWhite:.15 alpha:1];
+    control.labelTextColorOutsideSlider = [UIColor whiteColor];
+    control.cornerRadius = 10;
+    control.font = [UIFont systemFontOfSize:12]
+    ;
+    //avoid a retain cycle
+    __weak MainViewController *weakSelf = self;
+    
+    [control setPressedHandler:^(NSUInteger index) {
+        if (index == [[NSUserDefaults standardUserDefaults]integerForKey:@"filter"] - 1) {
+            return;
+        }
+        [weakSelf filterChanged:index];
+    }];
     
     //Will display searchcontroller over this viewcontroller
     self.definesPresentationContext = YES;
@@ -204,6 +221,9 @@ static const CGFloat kCellHeight = 200;
      then get new types. If it isnt, then wait for location to update
      or else an exception will be thrown
      */
+    
+    //make the locationManager start updating the location
+    [locationManager getUserLocationWithInterval:20];
     
     if (self.filter == FilterPopulation) {
         [self getNewLocationsForCurrentType];
@@ -223,9 +243,6 @@ static const CGFloat kCellHeight = 200;
     
     [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
-    //make the locationManager start updating the location
-    [locationManager getUserLocationWithInterval:20];
-    
     /* Library code */
     self.shyNavBarManager.scrollView = (UIScrollView*)self.tableView;
 }
@@ -237,6 +254,7 @@ static const CGFloat kCellHeight = 200;
     self.shyNavBarManager.expansionResistance = 200.0f;
     self.shyNavBarManager.contractionResistance = 60.0f;
     self.shyNavBarManager.scrollView = self.tableView;
+    
 }
 
 #pragma mark - Data Methods
@@ -302,7 +320,7 @@ static const CGFloat kCellHeight = 200;
                                  withRowAnimation:UITableViewRowAnimationFade];
             
             //scroll the tableview to the top
-            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
             
             //reload the tableview but after the cells have animated from being changed/moved
             [self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:.25];
@@ -311,6 +329,9 @@ static const CGFloat kCellHeight = 200;
             }
             errorLabel.hidden = YES;
             [self.refreshControl endRefreshing];
+            
+            //set the last displayed index back to zero since all cells have been replaced
+            lastIndex = 5;
             
             searchController.searchBar.userInteractionEnabled = YES;
         }
@@ -425,10 +446,10 @@ static const CGFloat kCellHeight = 200;
     }
 }
 
-//Method attached to the ValueChanged event of the segemented control
+//Method attached to the hanlder of the DCSwitch
 //Changes the NSUserDefaults value for the filter and reloads all the current data
-- (void)filterChanged:(id)sender{
-    switch (((UISegmentedControl*)sender).selectedSegmentIndex) {
+- (void)filterChanged:(NSUInteger)index{
+    switch (index) {
         case 0:
             self.filter = FilterLocation;
             [[NSUserDefaults standardUserDefaults]setInteger:1 forKey:@"filter"];
@@ -544,6 +565,10 @@ static const CGFloat kCellHeight = 200;
     
     NSLog(@"Veritcal Accuracy: %f", lastLocation.verticalAccuracy);
     NSLog(@"Horizontal Accuracy: %f", lastLocation.horizontalAccuracy);
+    
+    if (!currentLocation){
+        currentLocation = [PFGeoPoint geoPointWithLocation:lastLocation];
+    }
     
     if (lastLocation.horizontalAccuracy > 100 || lastLocation.verticalAccuracy > 100) {
         return;
@@ -710,12 +735,21 @@ static const CGFloat kCellHeight = 200;
         DCPlace *place = placeData[indexPath.row];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.placeImageView.image = nil;
-        cell.placeImageView.file = place.placeImage;
-        [cell.placeImageView loadInBackground:^(UIImage *image, NSError *error){
-        }];
-        
+
         cell.nameLabel.text = place.name;
+        
+        if (indexPath.row > lastIndex) {
+            cell.placeImageView.alpha = 0;
+        }
+        cell.placeImageView.image = nil;
+        PFFile *file = place.placeImage;
+        [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error) {
+                cell.placeImageView.image = [UIImage imageWithData:data];
+            }
+        } progressBlock:^(int percentDone) {
+        }];
+    
         [cell.nameLabel sizeToFit];
         CGRect frame = cell.nameLabel.frame;
         frame.size.width = MIN(cell.placeImageView.frame.size.width-20, frame.size.width+10);
@@ -766,10 +800,10 @@ static const CGFloat kCellHeight = 200;
         [view addSubview:control];
         
         if (![[NSUserDefaults standardUserDefaults]integerForKey:@"filter"]){
-            control.selectedSegmentIndex = 1;
+            [control selectIndex:1 animated:YES];
         }
         else{
-            control.selectedSegmentIndex = [[NSUserDefaults standardUserDefaults]integerForKey:@"filter"] - 1;
+            [control selectIndex:[[NSUserDefaults standardUserDefaults]integerForKey:@"filter"] - 1 animated:YES];
         }
         
         return cell;
@@ -794,8 +828,8 @@ static const CGFloat kCellHeight = 200;
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (scrollDirection == ScrollDirectionDown && indexPath.row > self.view.frame.size.height / kCellHeight)
     {
-        static NSUInteger xOffset = 30;
-        static NSUInteger yOffset = 60;
+        static NSUInteger xOffset = 0;
+        static NSUInteger yOffset = 50;
         
         cell.frame = CGRectMake(cell.frame.origin.x - xOffset, cell.frame.origin.y + yOffset, cell.frame.size.width, cell.frame.size.height);
         POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
@@ -804,20 +838,30 @@ static const CGFloat kCellHeight = 200;
         anim.springBounciness = 10;
         [cell pop_addAnimation:anim forKey:@"grow"];
         
+        if (indexPath.row > lastIndex) {
+            lastIndex = (int)indexPath.row;
+            DCTableViewCell *cell1 = (DCTableViewCell*)cell;
+            [UIView animateWithDuration:.5 animations:^{cell1.placeImageView.alpha = 1;}];
+        }
+        
+        
+        
         safeIndex = (int)indexPath.row;
-    }
+}
     
     if (indexPath.section == 2) {
+        lastIndex++;
         [self loadMoreLocationsForCurrentType];
     }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
-    CGFloat delta = scrollView.contentOffset.y;
+    CGFloat delta = scrollView.contentOffset.y + 64;
     
     if (lastContentOffset > delta) {
         scrollDirection = ScrollDirectionUp;
+
     }
     if (lastContentOffset < delta) {
         scrollDirection = ScrollDirectionDown;
@@ -825,11 +869,7 @@ static const CGFloat kCellHeight = 200;
     
     lastContentOffset = delta;
     
-    if (delta < 0) {
-        CGRect rect = self.refreshControl.frame;
-        rect.origin.y += delta/4;
-        [self.refreshControl setFrame:rect];
-    }
+    
 }
 
 @end

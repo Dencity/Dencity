@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+#import "DCPlaceImage.h"
 #import "DCPlaceComment.h"
 
 @interface DCPlace : PFObject <PFSubclassing, CLLocationManagerDelegate>
@@ -44,11 +45,13 @@
 @property (retain) PFFile *placeImage;
 
 /*An array to hold all of the people that are currently there*/
-@property (retain) NSMutableArray *people;
+@property (retain) NSArray *people;
 
 /*An array to hold all of the comments that are posted*/
-@property (retain) NSMutableArray *comments;
-@property (readonly,getter=getNumberOfComments) NSInteger *numberOfComments;
+@property (retain) NSArray *comments;
+
+/*An array to hold all of the images that people are posting*/
+@property (retain) NSArray *images;
 
 +(NSString*)parseClassName;
 
@@ -58,7 +61,12 @@
 - (void)removePerson:(PFUser*)user;
 - (void)addComment:(DCPlaceComment*)comment;
 - (void)removeComment:(DCPlaceComment*)comment;
+- (void)addImage:(DCPlaceImage*)image;
+- (void)removeImage:(DCPlaceImage*)image;
+
+- (NSMutableArray*)allUsers;
 
 + (void)createPlaceWithLocation:(PFGeoPoint*)location name:(NSString*)name address:(NSString*)address;
+
 
 @end

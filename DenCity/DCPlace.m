@@ -17,7 +17,7 @@
 
 @implementation DCPlace
 
-@dynamic name, address, population, oldPopulation, storedPopulation, location, type, people, comments, numberOfComments, placeId, placeImage;
+@dynamic name, address, population, oldPopulation, storedPopulation, location, type, people, comments, images, placeId, placeImage;
 
 + (NSString*)parseClassName{
     return @"DCPlace";
@@ -54,7 +54,7 @@
 - (void)addPerson:(PFUser*)user{
     NSMutableArray *arr = [NSMutableArray arrayWithArray:self.people];
     [arr addObject:user.objectId];
-    self.people = arr;
+    self.people = [NSArray arrayWithArray:arr];
     self.population = [NSNumber numberWithInt:[self.population intValue] + 1];
     [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!succeeded || error) {
@@ -66,7 +66,7 @@
     NSMutableArray *arr = [NSMutableArray arrayWithArray:self.people];
     if ([arr containsObject:user.objectId]) {
         [arr removeObject:user.objectId];
-        self.people = arr;
+        self.people = [NSArray arrayWithArray:arr];
         self.population = [NSNumber numberWithInt:(MAX([self.population intValue] - 1, 0))];
         [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!succeeded || error) {
@@ -76,14 +76,10 @@
     }
 }
 
-- (NSInteger)getnumberOfComments{
-    return self.comments.count;
-}
-
 - (void)addComment:(DCPlaceComment *)comment{
     NSMutableArray *arr = [NSMutableArray arrayWithArray:self.comments];
-    [arr addObject:comment];
-    self.comments = arr;
+    [arr addObject:comment.objectId];
+    self.comments = [NSArray arrayWithArray:arr];
     [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!succeeded) {
             [self saveEventually];
@@ -93,9 +89,33 @@
 
 - (void)removeComment:(DCPlaceComment *)comment{
     NSMutableArray *arr = [NSMutableArray arrayWithArray:self.comments];
-    if ([arr containsObject:comment]) {
-        [arr removeObject:comment];
-        self.comments = arr;
+    if ([arr containsObject:comment.objectId]) {
+        [arr removeObject:comment.objectId];
+        self.comments = [NSArray arrayWithArray:arr];
+    }
+    [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!succeeded) {
+            [self saveEventually];
+        }
+    }];
+}
+
+- (void)addImage:(DCPlaceImage *)image{
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:self.images];
+    [arr addObject:image.objectId];
+    self.images = [NSArray arrayWithArray:arr];
+    [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!succeeded) {
+            [self saveEventually];
+        }
+    }];
+}
+
+- (void)removeImage:(DCPlaceImage *)image{
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:self.images];
+    if ([arr containsObject:image.objectId]) {
+        [arr removeObject:image.objectId];
+        self.images = [NSArray arrayWithArray:arr];
     }
     [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!succeeded) {

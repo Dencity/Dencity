@@ -1,16 +1,48 @@
 PODS:
+  - AFNetworking (2.5.1):
+    - AFNetworking/NSURLConnection (= 2.5.1)
+    - AFNetworking/NSURLSession (= 2.5.1)
+    - AFNetworking/Reachability (= 2.5.1)
+    - AFNetworking/Security (= 2.5.1)
+    - AFNetworking/Serialization (= 2.5.1)
+    - AFNetworking/UIKit (= 2.5.1)
+  - AFNetworking/NSURLConnection (2.5.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.1)
+  - AFNetworking/Security (2.5.1)
+  - AFNetworking/Serialization (2.5.1)
+  - AFNetworking/UIKit (2.5.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - Bolts (1.1.3)
   - CWStatusBarNotification (2.2.2)
   - Doppelganger (1.3)
   - pop (1.0.7)
+  - RJImageLoader (0.2.0)
+  - UberKit (0.1.0)
 
 DEPENDENCIES:
+  - AFNetworking (~> 2.0)
+  - Bolts
   - CWStatusBarNotification (~> 2.2.2)
   - Doppelganger
   - pop (~> 1.0)
+  - RJImageLoader
+  - UberKit
 
 SPEC CHECKSUMS:
+  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
+  Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   CWStatusBarNotification: 7e43716355830c26124eae9b91c4434dfa2a6a73
   Doppelganger: 5f8ece005622fdcb01fe3e56e0ed7cad2fc4d5cb
   pop: 2f14a1ea61339767af9e66741b418c831b3844df
+  RJImageLoader: 285a2db6ff2b905bd880b8219a2cbe5054f86411
+  UberKit: 2e45c6e9de9f5e9847ad9248bb8105bafd482724
 
 COCOAPODS: 0.35.0

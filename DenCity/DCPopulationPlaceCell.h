@@ -16,10 +16,11 @@
 
 @end
 
-@interface DCPopulationPlaceCell : UIScrollView <UIScrollViewDelegate>
+@interface DCPopulationPlaceCell : UIScrollView
 
 @property (nonatomic, strong) UILabel *popLabel;
 @property (nonatomic, strong) UILabel *oldPopLabel;
-@property (nonatomic, weak) id<DCPopulationPlaceCellDelegate> delegate;
+@property (nonatomic, weak) id<DCPopulationPlaceCellDelegate> placeDelegate;
+
 
 @end

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF0330961A9D0E2F003F04F8 /* DCUberView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0330951A9D0E2F003F04F8 /* DCUberView.m */; };
+		BF0330981A9D18D8003F04F8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0330971A9D18D8003F04F8 /* MapKit.framework */; };
+		BF03309E1A9E3F76003F04F8 /* DCPlaceImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BF03309D1A9E3F76003F04F8 /* DCPlaceImage.m */; };
+		BF0330A21A9F95B5003F04F8 /* DCSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0330A11A9F95B5003F04F8 /* DCSwitch.m */; };
 		BF04E3FC195CB4F40077C054 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF04E3FB195CB4F40077C054 /* main.m */; };
 		BF04E3FF195CB4F40077C054 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF04E3FE195CB4F40077C054 /* AppDelegate.m */; };
 		BF04E401195CB4F40077C054 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF04E400195CB4F40077C054 /* Images.xcassets */; };
@@ -100,12 +104,12 @@
 		BFBA5CB9196148EA0091EB8F /* city2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBA5CB8196148EA0091EB8F /* city2@2x.png */; };
 		BFBA5CC3196157580091EB8F /* forward1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBA5CC1196157580091EB8F /* forward1@2x.png */; };
 		BFBA5CC4196157580091EB8F /* back1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBA5CC2196157580091EB8F /* back1@2x.png */; };
+		BFBAF6781A9A827700716FF6 /* DCPlaceScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBAF6771A9A827700716FF6 /* DCPlaceScrollView.m */; };
 		BFC138D71A1AACA70000112A /* beer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC138D51A1AACA70000112A /* beer@2x.png */; };
 		BFC138D81A1AACA70000112A /* martini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC138D61A1AACA70000112A /* martini@2x.png */; };
 		BFC196D71A808B97009771AE /* DCPlaceComment.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC196D61A808B97009771AE /* DCPlaceComment.m */; };
 		BFC196DD1A815E4C009771AE /* DCPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC196DC1A815E4C009771AE /* DCPlace.m */; };
 		BFC5CAED199BDDC600B4FB6E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC5CAEC199BDDC600B4FB6E /* MainViewController.m */; };
-		BFD37B2E19EB513300571659 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD37B2C19EB513300571659 /* Bolts.framework */; };
 		BFD37B2F19EB513300571659 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD37B2D19EB513300571659 /* Parse.framework */; };
 		BFFDA1441A61A4C50002028D /* MYBlurIntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFDA1411A61A4C50002028D /* MYBlurIntroductionView.m */; };
 		BFFDA1451A61A4C50002028D /* MYIntroductionPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = BFFDA1431A61A4C50002028D /* MYIntroductionPanel.m */; };
@@ -128,6 +132,13 @@
 /* Begin PBXFileReference section */
 		19C44AEE046C2321C29E080D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		47965359CB63670B1A796815 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF0330941A9D0E2F003F04F8 /* DCUberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCUberView.h; sourceTree = "<group>"; };
+		BF0330951A9D0E2F003F04F8 /* DCUberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCUberView.m; sourceTree = "<group>"; };
+		BF0330971A9D18D8003F04F8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		BF03309C1A9E3F76003F04F8 /* DCPlaceImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCPlaceImage.h; sourceTree = "<group>"; };
+		BF03309D1A9E3F76003F04F8 /* DCPlaceImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCPlaceImage.m; sourceTree = "<group>"; };
+		BF0330A01A9F95B5003F04F8 /* DCSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCSwitch.h; sourceTree = "<group>"; };
+		BF0330A11A9F95B5003F04F8 /* DCSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCSwitch.m; sourceTree = "<group>"; };
 		BF04E3F6195CB4F30077C054 /* DenCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DenCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF04E3FA195CB4F40077C054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF04E3FB195CB4F40077C054 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -276,6 +287,8 @@
 		BFBA5CB8196148EA0091EB8F /* city2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "city2@2x.png"; sourceTree = "<group>"; };
 		BFBA5CC1196157580091EB8F /* forward1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward1@2x.png"; sourceTree = "<group>"; };
 		BFBA5CC2196157580091EB8F /* back1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back1@2x.png"; sourceTree = "<group>"; };
+		BFBAF6761A9A827700716FF6 /* DCPlaceScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCPlaceScrollView.h; sourceTree = "<group>"; };
+		BFBAF6771A9A827700716FF6 /* DCPlaceScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCPlaceScrollView.m; sourceTree = "<group>"; };
 		BFC138D51A1AACA70000112A /* beer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beer@2x.png"; sourceTree = "<group>"; };
 		BFC138D61A1AACA70000112A /* martini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "martini@2x.png"; sourceTree = "<group>"; };
 		BFC196D51A808B97009771AE /* DCPlaceComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCPlaceComment.h; sourceTree = "<group>"; };
@@ -284,7 +297,6 @@
 		BFC196DC1A815E4C009771AE /* DCPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCPlace.m; sourceTree = "<group>"; };
 		BFC5CAEB199BDDC600B4FB6E /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		BFC5CAEC199BDDC600B4FB6E /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		BFD37B2C19EB513300571659 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		BFD37B2D19EB513300571659 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		BFFDA1401A61A4C50002028D /* MYBlurIntroductionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYBlurIntroductionView.h; sourceTree = "<group>"; };
 		BFFDA1411A61A4C50002028D /* MYBlurIntroductionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYBlurIntroductionView.m; sourceTree = "<group>"; };
@@ -311,8 +323,8 @@
 				BF865662198AABF400F3AD21 /* Security.framework in Frameworks */,
 				BF865660198AABDD00F3AD21 /* MobileCoreServices.framework in Frameworks */,
 				BF86565E198AABD500F3AD21 /* libz.dylib in Frameworks */,
+				BF0330981A9D18D8003F04F8 /* MapKit.framework in Frameworks */,
 				BF86565C198AABCB00F3AD21 /* CoreLocation.framework in Frameworks */,
-				BFD37B2E19EB513300571659 /* Bolts.framework in Frameworks */,
 				BF86565A198AABC500F3AD21 /* CoreGraphics.framework in Frameworks */,
 				BF865658198AABB900F3AD21 /* CFNetwork.framework in Frameworks */,
 				BFD37B2F19EB513300571659 /* Parse.framework in Frameworks */,
@@ -361,6 +373,31 @@
 				BF865655198AABA900F3AD21 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF0330921A9D0D82003F04F8 /* DCPlaceScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				BFBAF6761A9A827700716FF6 /* DCPlaceScrollView.h */,
+				BFBAF6771A9A827700716FF6 /* DCPlaceScrollView.m */,
+			);
+			name = DCPlaceScrollView;
+			sourceTree = "<group>";
+		};
+		BF0330931A9D0D95003F04F8 /* DCUberView */ = {
+			isa = PBXGroup;
+			children = (
+				BF0330941A9D0E2F003F04F8 /* DCUberView.h */,
+				BF0330951A9D0E2F003F04F8 /* DCUberView.m */,
+			);
+			name = DCUberView;
+			sourceTree = "<group>";
+		};
+		BF03309F1A9E67F7003F04F8 /* DCPlaceImageTableView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DCPlaceImageTableView;
 			sourceTree = "<group>";
 		};
 		BF04E3ED195CB4F30077C054 = {
@@ -486,6 +523,9 @@
 		BF0512C8195FB28C00112F77 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BF03309F1A9E67F7003F04F8 /* DCPlaceImageTableView */,
+				BF0330931A9D0D95003F04F8 /* DCUberView */,
+				BF0330921A9D0D82003F04F8 /* DCPlaceScrollView */,
 				BFCB7F621A9941050037812A /* DCRecentSearchView */,
 				BF91376D1A842824004A5F31 /* DCPlaceCells */,
 				BFFDA13F1A61A4C50002028D /* MYBlurIntroductionView */,
@@ -521,8 +561,8 @@
 		BF2F462D19E9A1F30099D105 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF0330971A9D18D8003F04F8 /* MapKit.framework */,
 				BF1F24B31A7451BA00534004 /* Accounts.framework */,
-				BFD37B2C19EB513300571659 /* Bolts.framework */,
 				BFD37B2D19EB513300571659 /* Parse.framework */,
 				BF7DE772198819A800D9FD8F /* QuartzCore.framework */,
 				47965359CB63670B1A796815 /* libPods.a */,
@@ -691,6 +731,8 @@
 				BFC196D61A808B97009771AE /* DCPlaceComment.m */,
 				BFC196DB1A815E4C009771AE /* DCPlace.h */,
 				BFC196DC1A815E4C009771AE /* DCPlace.m */,
+				BF03309C1A9E3F76003F04F8 /* DCPlaceImage.h */,
+				BF03309D1A9E3F76003F04F8 /* DCPlaceImage.m */,
 			);
 			name = "Parse Subclasses";
 			sourceTree = "<group>";
@@ -746,6 +788,8 @@
 				BFFDA1681A61FA800002028D /* DCTransitionAnimator.h */,
 				BFFDA1671A61FA800002028D /* DCTransitionAnimator.m */,
 				BF087FD919D768470043B17F /* Buttons */,
+				BF0330A01A9F95B5003F04F8 /* DCSwitch.h */,
+				BF0330A11A9F95B5003F04F8 /* DCSwitch.m */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -819,6 +863,9 @@
 						DevelopmentTeam = XS9EAE8YBF;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
 						};
@@ -962,9 +1009,11 @@
 				BFC5CAED199BDDC600B4FB6E /* MainViewController.m in Sources */,
 				BFC196DD1A815E4C009771AE /* DCPlace.m in Sources */,
 				BFBA35461A4619BA007702BF /* TLYDelegateProxy.m in Sources */,
+				BF0330A21A9F95B5003F04F8 /* DCSwitch.m in Sources */,
 				BF65DEF319A3E24500ADE397 /* ProfileViewController.m in Sources */,
 				BF58466A19F8BD62008BF04E /* MMDrawerVisualState.m in Sources */,
 				BF58467319F8BE2A008BF04E /* JPBFloatingTextViewController.m in Sources */,
+				BF0330961A9D0E2F003F04F8 /* DCUberView.m in Sources */,
 				BF2F463B19E9C2A70099D105 /* DHNavigationController.m in Sources */,
 				BF04E3FC195CB4F40077C054 /* main.m in Sources */,
 				BFB5C8901A7C74DB00FAC99B /* DCRecentSearchView.m in Sources */,
@@ -975,11 +1024,13 @@
 				BF5EEB181A23C96100615744 /* PersonTableViewCell.m in Sources */,
 				BF58467519F8BE2A008BF04E /* JPBParallaxTableViewController.m in Sources */,
 				BF86BDD61A856A4B00C8155E /* DCMenuTableViewCell.m in Sources */,
+				BF03309E1A9E3F76003F04F8 /* DCPlaceImage.m in Sources */,
 				BF04E418195CB5250077C054 /* LoginViewController.m in Sources */,
 				BFC196D71A808B97009771AE /* DCPlaceComment.m in Sources */,
 				BF0512D1195FC16600112F77 /* LogIn2ViewController.m in Sources */,
 				BF58468419F8CA83008BF04E /* FXBlurView.m in Sources */,
 				BF58466819F8BD62008BF04E /* MMDrawerBarButtonItem.m in Sources */,
+				BFBAF6781A9A827700716FF6 /* DCPlaceScrollView.m in Sources */,
 				BF8522DD1A71EB5900122A59 /* DCSearchViewController.m in Sources */,
 				BF08B3A81A92835B00062643 /* DCUtility.m in Sources */,
 				BF58467419F8BE2A008BF04E /* JPBParallaxBlurViewController.m in Sources */,

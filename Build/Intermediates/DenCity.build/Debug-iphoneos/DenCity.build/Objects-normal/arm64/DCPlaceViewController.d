@@ -31,6 +31,8 @@ dependencies: \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Parse.framework/Headers/PFTwitterUtils.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Parse.framework/Headers/PF_Twitter.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlace.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlaceImage.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Parse.framework/Headers/PFObject+Subclass.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlaceComment.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/MarqueeLabel.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/UIViewController+MMDrawerController.h \
@@ -39,4 +41,6 @@ dependencies: \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DACircularProgress/DCUtility.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/WDActivityIndicator/WDActivityIndicator.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPopulationPlaceCell.h \
-  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/PersonTableViewCell.h
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/PersonTableViewCell.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlaceScrollView.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCUberView.h

@@ -30,13 +30,13 @@ CGFloat const kPlaceCommentMaxWordCount = 100;
 }
 
 - (void)setMessage:(NSString *)message{
-    NSAssert((message.length > kPlaceCommentMaxWordCount), @"Message can only be 100 words or less");
+    NSAssert((message.length > kPlaceCommentMaxWordCount), @"Message can only be 100 characters or less");
     self.message = message;
 }
 
 - (NSString*)stringFromTimeStamp{
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"HH:mm:ss"];
+    [formatter setDateFormat:@"HH:mm"];
     return [formatter stringFromDate:self.timeStamp];
 }
 

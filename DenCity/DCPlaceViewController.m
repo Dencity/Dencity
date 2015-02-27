@@ -13,6 +13,8 @@
 #import "WDActivityIndicator.h"
 #import "DCPopulationPlaceCell.h"
 #import "PersonTableViewCell.h"
+#import "DCPlaceScrollView.h"
+#import "DCUberView.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
@@ -20,6 +22,8 @@
     UIImage *currentImage;
     
     WDActivityIndicator *ind;
+    
+    DCPlaceScrollView *mainScrollView;
     
     DCPopulationPlaceCell *populationView;
     UITableView *peopleView;
@@ -34,6 +38,7 @@
     
     CGRect originalPeopleFrame;
     CGRect toPeopleFrame;
+    
 }
 
 @end
@@ -115,16 +120,25 @@ const CGFloat header_height = 70;
         }
     }];
     
+    WDActivityIndicator *indc = [[WDActivityIndicator alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+    indc.center = peopleView.center;
+    indc.indicatorStyle = WDActivityIndicatorStyleGradient;
+    indc.hidesWhenStopped = YES;
+    [peopleView addSubview:indc];
+    [indc startAnimating];
+    PFQuery *q = [PFUser query];
+    [q whereKey:@"objectId" containedIn:self.place.people];
+    [q findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error){
+            people = [NSMutableArray arrayWithArray:objects];
+            [indc stopAnimating];
+            [self reloadTableView];
+        }
+    }];
+    
     placeNameLabel.text = self.place.name;
     [placeNameLabel sizeToFit];
     [placeNameLabel setFrame:CGRectMake(10, 15, MIN(self.view.frame.size.width-20, placeNameLabel.frame.size.width + 4), placeNameLabel.frame.size.height)];
-    
-    people = [NSMutableArray arrayWithArray:self.place.people];
-    [peopleView reloadData];
-    
-    if (people.count == 0) {
-        noPeopleLabel.alpha = 1;
-    }
     
     placeAddressLabel.text = self.place.address;
     [placeAddressLabel sizeToFit];
@@ -138,6 +152,18 @@ const CGFloat header_height = 70;
         backButton.alpha = 1;
         peopleView.alpha = 1;
     }];
+    
+    [self reloadTableView];
+}
+
+- (void)reloadTableView{
+    if (people.count == 0) {
+        noPeopleLabel.alpha = 1;
+    }
+    else{
+        noPeopleLabel.alpha = 0;
+    }
+    [peopleView reloadData];
 }
 
 - (void)setUpViews{
@@ -153,12 +179,12 @@ const CGFloat header_height = 70;
     [self.view addSubview:backgroundImageView];
     [self.view addSubview:nonBlurBackgroundImageView];
     
-    mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, header_height, self.view.frame.size.width, self.view.frame.size.height-header_height-50)];
+    mainScrollView = [[DCPlaceScrollView alloc]initWithFrame:CGRectMake(0, header_height, self.view.frame.size.width, self.view.frame.size.height-header_height-50)];
     mainScrollView.backgroundColor = [UIColor clearColor];
-    mainScrollView.showsVerticalScrollIndicator = NO;
     mainScrollView.delegate = self;
-    mainScrollView.contentSize = CGSizeMake(0, 1000);
+    mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width * 4, 0);
     mainScrollView.scrollEnabled = YES;
+    mainScrollView.clipsToBounds = YES;
     [self.view addSubview:mainScrollView];
     
     headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, header_height)];
@@ -199,6 +225,16 @@ const CGFloat header_height = 70;
     backButton.alpha = 0;
     [bottomView addSubview:backButton];
     
+    [self setUpFirstCard];
+    [self setUpSecondCard];
+    
+    [self.view bringSubviewToFront:bottomView];
+}
+
+#pragma mark - Helper Methods
+
+- (void)setUpFirstCard{
+    
     populationView = [[DCPopulationPlaceCell alloc]initWithFrame:CGRectMake(10, 10, mainScrollView.frame.size.width-20, 50)];
     populationView.backgroundColor = [UIColor colorWithWhite:0 alpha:.35];
     populationView.layer.cornerRadius = 5.0f;
@@ -206,9 +242,10 @@ const CGFloat header_height = 70;
     populationView.layer.borderColor = [UIColor whiteColor].CGColor;
     populationView.alpha = 0;
     populationView.delegate = self;
+    populationView.placeDelegate = self;
     [mainScrollView addSubview:populationView];
     
-    peopleView = [[UITableView alloc]initWithFrame:CGRectMake(10, 10+populationView.frame.size.height + 10, mainScrollView.frame.size.width-20, 250) style:UITableViewStyleGrouped];
+    peopleView = [[UITableView alloc]initWithFrame:CGRectMake(10, 10+populationView.frame.size.height + 10, mainScrollView.frame.size.width-20, self.view.frame.size.height - header_height*2 - populationView.frame.size.height - 20) style:UITableViewStyleGrouped];
     peopleView.contentInset = UIEdgeInsetsMake(-35, 0, -35, 0);
     peopleView.separatorColor = [UIColor whiteColor];
     peopleView.backgroundColor = [UIColor colorWithWhite:0 alpha:.35];
@@ -233,11 +270,12 @@ const CGFloat header_height = 70;
     [peopleView addSubview:noPeopleLabel];
     
     [mainScrollView addSubview:peopleView];
-    
-    [self.view bringSubviewToFront:bottomView];
 }
 
-#pragma mark - Helper Methods
+- (void)setUpSecondCard{
+    CGFloat xOrigin = self.view.frame.size.width;
+    
+}
 
 - (CGRect)frameForSize:(CGSize)size{
     CGFloat oldwidth = size.width;
@@ -294,6 +332,7 @@ const CGFloat header_height = 70;
 #pragma mark - DCPopulationPlaceCellDelegate
 
 - (void)buttonWasPressed:(BOOL)selected{
+    [peopleView reloadData];
     if (selected){
         POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
         CGRect rect = populationView.frame;
@@ -339,6 +378,7 @@ const CGFloat header_height = 70;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (tableView == peopleView) {
+        NSLog(@"people: %i",(int)people.count);
         return people.count;
     }
     return 0;
@@ -348,10 +388,7 @@ const CGFloat header_height = 70;
     NSLog(@"creating cell");
     if (tableView == peopleView) {
         PersonTableViewCell *cell;
-        PFQuery *query = [PFUser query];;
-        [query whereKey:@"objectId" equalTo:people[indexPath.row]];
-        PFUser *user = (PFUser*)[query getFirstObject];
-        NSLog(@"User is %@", user);
+        PFUser *user = people[indexPath.row];
         if ([PFAnonymousUtils isLinkedWithUser:user]) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"cellAnonymous"];
             //set up for anonymous user
@@ -383,7 +420,7 @@ const CGFloat header_height = 70;
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    CGFloat delta = scrollView.contentOffset.y;
+    CGFloat delta = scrollView.contentOffset.x;
     
     if (delta < 0) {
         nonBlurBackgroundImageView.alpha = MIN(1, -delta/300);
@@ -395,11 +432,6 @@ const CGFloat header_height = 70;
         populationView.alpha = 1;
         peopleView.alpha = 1;
     }
-}
-
-#pragma mark - Data Methods
-
-- (void)foundPerson{
 }
 
 @end

@@ -35,11 +35,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DenCity/MainViewController.m"
-            timestampString = "446111036.897753"
+            timestampString = "446750342.425617"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "-getNewLocationsForCurrentType"
             landmarkType = "5">
          </BreakpointContent>
@@ -51,12 +51,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DenCity/MainViewController.m"
-            timestampString = "446111036.897753"
+            timestampString = "446717791.611994"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DenCity/DCUberView.m"
+            timestampString = "446530677.885316"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DenCity/DCSwitch.m"
+            timestampString = "446666599.133329"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "-initWithAttributedStringsArray:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -34,4 +34,6 @@ dependencies: \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/FXBlurView/FXBlurView.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DACircularProgress/DCUtility.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlace.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlaceImage.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/Parse.framework/Headers/PFObject+Subclass.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlaceComment.h

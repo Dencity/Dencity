@@ -18,7 +18,6 @@
     
     UIButton *backButton;
     
-    UIScrollView *mainScrollView;
 }
 
 @property (nonatomic, strong) UIImageView *backgroundImageView;

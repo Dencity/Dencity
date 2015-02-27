@@ -4,12 +4,32 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-CWStatusBarNotification.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-Doppelganger.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-RJImageLoader.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-UberKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,47 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>438B8455BF0573CD1730A2BA</key>
+		<key>2FD724BFF35C75F32EA742DB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>43932D22CDF6F7C6EF04E2C4</key>
+		<key>4644551E4BB975A23EA1CE83</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>75D34F6EA9D0E45CCB12AEC0</key>
+		<key>4C86E9DE9FFEA14A8B66F4C9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8C4196A0A6B7D14388765E24</key>
+		<key>5509357D9720E7B9B4B98ACC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>93A62DF16E7F66C3AA775654</key>
+		<key>9CD8D145638DA05AEC971351</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B7FC9EC30B36D4B95DD50E58</key>
+		<key>A4D1EEC864C14B1DDAF4C209</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC94E12F689648FD30EC492E</key>
+		<key>BC5FFA14496C75397FF99C3A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D7BF42F3E793CB2069780785</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E50837A7AE729656811BB576</key>
+		<key>F8E1B87D35FD866A951006F2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

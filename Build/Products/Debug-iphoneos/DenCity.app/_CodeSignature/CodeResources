@@ -4,13 +4,9 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>DCTableViewCell_Imageview_Image@2x.png</key>
-		<data>
-		Dd2aqcJk+yXqzrg/RQ64SPlk5aE=
-		</data>
 		<key>Info.plist</key>
 		<data>
-		oa9VaKaqlCNkfkcs36h5NO9U0Po=
+		aGCy0lHhccDRjzn+gSx/6s1u3b4=
 		</data>
 		<key>LaunchImage-800-667h@2x.png</key>
 		<data>
@@ -99,10 +95,6 @@
 		<key>birthday@2x.png</key>
 		<data>
 		Vn/3MlwKJGc9DbHvA0Gqd5OVbaE=
-		</data>
-		<key>both@2x.png</key>
-		<data>
-		zz6LvlRVoVbcd5osMCNdP5KFGWw=
 		</data>
 		<key>cancel@2x.png</key>
 		<data>
@@ -231,10 +223,6 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>DCTableViewCell_Imageview_Image@2x.png</key>
-		<data>
-		Dd2aqcJk+yXqzrg/RQ64SPlk5aE=
-		</data>
 		<key>LaunchImage-800-667h@2x.png</key>
 		<data>
 		zqhGMx2v24gLrBGOmLtTH3Iewt0=
@@ -318,10 +306,6 @@
 		<key>birthday@2x.png</key>
 		<data>
 		Vn/3MlwKJGc9DbHvA0Gqd5OVbaE=
-		</data>
-		<key>both@2x.png</key>
-		<data>
-		zz6LvlRVoVbcd5osMCNdP5KFGWw=
 		</data>
 		<key>cancel@2x.png</key>
 		<data>

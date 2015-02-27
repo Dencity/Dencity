@@ -18,6 +18,7 @@
 #import "DCPlace.h"
 #import "DCUtility.h"
 #import "DCPlaceComment.h"
+#import "DCPlaceImage.h"
 #import <CWStatusBarNotification/CWStatusBarNotification.h>
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
@@ -36,6 +37,7 @@
     
     [DCPlace registerSubclass];
     [DCPlaceComment registerSubclass];
+    [DCPlaceImage registerSubclass];
     
     [Parse setApplicationId:@"QpZKRJLiy7baIH1HjkMPGxSsEgFmAzc9tq9PwYTC"
                   clientKey:@"sAgh74Fq3a4adz0AaS0MUL1iLbNfK3lhLEXM0BrJ"];

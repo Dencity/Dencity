@@ -36,7 +36,6 @@
 }
 
 - (void)normalSetup{
-    self.delegate = self;
     self.pagingEnabled = YES;
     self.showsHorizontalScrollIndicator = NO;
     self.contentSize = CGSizeMake(self.frame.size.width*2, self.frame.size.height);
@@ -107,7 +106,7 @@
         [populationButton setBackgroundColor:[UIColor clearColor]];
         [oldPopulationButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [oldPopulationButton setBackgroundColor:[UIColor clearColor]];
-        [self.delegate buttonWasPressed:selected];
+        [self.placeDelegate buttonWasPressed:selected];
     }
     else{
         selected = YES;
@@ -115,7 +114,7 @@
         [populationButton setBackgroundColor:[UIColor whiteColor]];
         [oldPopulationButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [oldPopulationButton setBackgroundColor:[UIColor whiteColor]];
-        [self.delegate buttonWasPressed:selected];
+        [self.placeDelegate buttonWasPressed:selected];
     }
 }
 
