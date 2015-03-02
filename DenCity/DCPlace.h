@@ -12,6 +12,8 @@
 
 @interface DCPlace : PFObject <PFSubclassing, CLLocationManagerDelegate>
 
+typedef void (^completion)(BOOL);
+
 /*Name and address of the place*/
 @property (retain) NSString *name;
 @property (retain) NSString *address;
@@ -57,14 +59,12 @@
 
 - (BOOL)isEqualToPlace:(DCPlace*)place;
 
-- (void)addPerson:(PFUser*)user;
-- (void)removePerson:(PFUser*)user;
-- (void)addComment:(DCPlaceComment*)comment;
-- (void)removeComment:(DCPlaceComment*)comment;
-- (void)addImage:(DCPlaceImage*)image;
-- (void)removeImage:(DCPlaceImage*)image;
-
-- (NSMutableArray*)allUsers;
+- (void)addPerson:(PFUser*)user withCompletion:(completion)completion;
+- (void)removePerson:(PFUser*)user withCompletion:(completion)completion;
+- (void)addComment:(DCPlaceComment*)comment withCompletion:(completion)completion;
+- (void)removeComment:(DCPlaceComment*)comment withCompletion:(completion)completion;
+- (void)addImage:(DCPlaceImage*)image withCompletion:(completion)completion;
+- (void)removeImage:(DCPlaceImage*)image withCompletion:(completion)completion;
 
 + (void)createPlaceWithLocation:(PFGeoPoint*)location name:(NSString*)name address:(NSString*)address;
 

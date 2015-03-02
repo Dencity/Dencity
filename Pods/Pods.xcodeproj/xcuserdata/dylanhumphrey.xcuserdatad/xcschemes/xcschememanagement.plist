@@ -24,6 +24,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-KRLCollectionViewGridLayout.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-LLSimpleCamera.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-RJImageLoader.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +57,52 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2FD724BFF35C75F32EA742DB</key>
+		<key>198623947654DF0152C354B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4644551E4BB975A23EA1CE83</key>
+		<key>1D6CC7F88BDD49B97E6A19AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4C86E9DE9FFEA14A8B66F4C9</key>
+		<key>324FA13BD62D91F367C73528</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5509357D9720E7B9B4B98ACC</key>
+		<key>3BC9C4608766D1351CC7313A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9CD8D145638DA05AEC971351</key>
+		<key>57668A2967269E6E3D961465</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A4D1EEC864C14B1DDAF4C209</key>
+		<key>80A9F023F6715A4A13A09808</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC5FFA14496C75397FF99C3A</key>
+		<key>83C0681B35DFD39EC05AF771</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F8E1B87D35FD866A951006F2</key>
+		<key>A27DF6172CADF7FC675F2F0A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A45FB45D92A529336EFF0109</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E504E3269AFEF7C847C3C4F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

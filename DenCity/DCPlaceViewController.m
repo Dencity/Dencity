@@ -15,18 +15,23 @@
 #import "PersonTableViewCell.h"
 #import "DCPlaceScrollView.h"
 #import "DCUberView.h"
+#import <KRLCollectionViewGridLayout/KRLCollectionViewGridLayout.h>
+#import "DCPlaceCollectionView.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
-@interface DCPlaceViewController ()<UIGestureRecognizerDelegate, UIScrollViewDelegate,  DCPopulationPlaceCellDelegate>{
+@interface DCPlaceViewController ()<UIGestureRecognizerDelegate, UIScrollViewDelegate,  DCPopulationPlaceCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
     UIImage *currentImage;
     
     WDActivityIndicator *ind;
     
     DCPlaceScrollView *mainScrollView;
     
+    UIButton *cameraButton;
+    
     DCPopulationPlaceCell *populationView;
     UITableView *peopleView;
+    DCPlaceCollectionView *imageCollectionView;
     
     UIView *headerView;
     UIView *bottomView;
@@ -38,6 +43,8 @@
     
     CGRect originalPeopleFrame;
     CGRect toPeopleFrame;
+    
+    UIImagePickerController *imagePicker;
     
 }
 
@@ -136,6 +143,8 @@ const CGFloat header_height = 70;
         }
     }];
     
+    [self setUpSecondCard];
+    
     placeNameLabel.text = self.place.name;
     [placeNameLabel sizeToFit];
     [placeNameLabel setFrame:CGRectMake(10, 15, MIN(self.view.frame.size.width-20, placeNameLabel.frame.size.width + 4), placeNameLabel.frame.size.height)];
@@ -225,8 +234,21 @@ const CGFloat header_height = 70;
     backButton.alpha = 0;
     [bottomView addSubview:backButton];
     
+    cameraButton = [[UIButton alloc]initWithFrame:CGRectMake(bottomView.frame.size.width - 70, 10, 60, 30)];
+    cameraButton.titleLabel.font = [UIFont systemFontOfSize:13];
+    [cameraButton setTitle:@"Camera" forState:UIControlStateNormal];
+    [cameraButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:0 alpha:.5]] forState:UIControlStateNormal];
+    [cameraButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [cameraButton addTarget:self action:@selector(takePicture) forControlEvents:UIControlEventTouchUpInside];
+    cameraButton.layer.cornerRadius = 7.0f;
+    cameraButton.layer.masksToBounds = YES;
+    cameraButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    cameraButton.layer.borderWidth = 1;
+    cameraButton.alpha = 0;
+    
+    [bottomView addSubview:cameraButton];
+    
     [self setUpFirstCard];
-    [self setUpSecondCard];
     
     [self.view bringSubviewToFront:bottomView];
 }
@@ -274,7 +296,22 @@ const CGFloat header_height = 70;
 
 - (void)setUpSecondCard{
     CGFloat xOrigin = self.view.frame.size.width;
+
+    KRLCollectionViewGridLayout *layout = [[KRLCollectionViewGridLayout alloc]init];
+    layout.numberOfItemsPerLine = 3;
+    layout.interitemSpacing = 1;
+    layout.lineSpacing = 1;
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
+    imageCollectionView = [[DCPlaceCollectionView alloc]initWithFrame:CGRectMake(xOrigin+10, 10, self.view.frame.size.width - 20, self.view.frame.size.height - header_height*2 - 10) collectionViewLayout:layout data:self.place.images];
+    imageCollectionView.backgroundColor = [UIColor colorWithWhite:0 alpha:.35];
+    imageCollectionView.layer.cornerRadius = 5.0f;
+    imageCollectionView.layer.borderColor = [UIColor whiteColor].CGColor;
+    imageCollectionView.layer.borderWidth = .5f;
+    imageCollectionView.delegate = imageCollectionView;
+    imageCollectionView.dataSource = imageCollectionView;
+    
+    [mainScrollView addSubview:imageCollectionView];
 }
 
 - (CGRect)frameForSize:(CGSize)size{
@@ -327,6 +364,22 @@ const CGFloat header_height = 70;
 
 - (void)back{
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+}
+
+- (void)takePicture{
+    if (![[[NSUserDefaults standardUserDefaults]objectForKey:@"isInPlace"] isEqualToString:self.place.name]) {
+        imagePicker = [[UIImagePickerController alloc]init];
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.delegate = self;
+        imagePicker.allowsEditing = YES;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
+    else{
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Error" message:@"You must be at this place in order to take a picture!" preferredStyle:UIAlertControllerStyleAlert];
+        [controller addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        }]];
+        [self presentViewController:controller animated:YES completion:nil];
+    }
 }
 
 #pragma mark - DCPopulationPlaceCellDelegate
@@ -385,7 +438,6 @@ const CGFloat header_height = 70;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"creating cell");
     if (tableView == peopleView) {
         PersonTableViewCell *cell;
         PFUser *user = people[indexPath.row];
@@ -421,7 +473,7 @@ const CGFloat header_height = 70;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat delta = scrollView.contentOffset.x;
-    
+        
     if (delta < 0) {
         nonBlurBackgroundImageView.alpha = MIN(1, -delta/300);
         populationView.alpha = 1 + delta/100;
@@ -432,6 +484,66 @@ const CGFloat header_height = 70;
         populationView.alpha = 1;
         peopleView.alpha = 1;
     }
+    
+    CGFloat minimumXOffsetSecond = 0;
+    CGFloat maximumXOffsetSecond = self.view.frame.size.width*2;
+    CGFloat middleXOffsetSecond = self.view.frame.size.width;
+    
+    if (delta > minimumXOffsetSecond && delta < middleXOffsetSecond) {
+        cameraButton.alpha = delta/(middleXOffsetSecond);
+    }
+    else if (delta > middleXOffsetSecond && delta < maximumXOffsetSecond){
+        cameraButton.alpha = (maximumXOffsetSecond - delta)/middleXOffsetSecond;
+    }
+    else if (delta == middleXOffsetSecond){
+        cameraButton.alpha = 1;
+        cameraButton.userInteractionEnabled = YES;
+    }
+    else{
+        cameraButton.alpha = 0;
+        cameraButton.userInteractionEnabled = NO;
+    }
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    
+    NSLog(@"Recieved Flick");
+    
+    //user selected an image from the library --> Save that image and upload it
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    //avoid retain cycle
+    __weak DCPlaceCollectionView *imgTableView = imageCollectionView;
+    __weak DCPlaceViewController *weakSelf = self;
+    DCPlaceImage *placeImage = [DCPlaceImage object];
+    
+    NSData *data = UIImagePNGRepresentation(image);
+    
+    placeImage.imageFile = [PFFile fileWithData:data];
+    placeImage.takenBy = [PFUser currentUser];
+    placeImage.timeStamp = [NSDate date];
+    [placeImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            NSLog(@"Saved Place Image");
+            [self.place addImage:placeImage withCompletion:^(BOOL finished) {
+                if (finished) {
+                    NSLog(@"Added image to place");
+                    [imgTableView reloadImageData:weakSelf.place.images];
+                }
+                else{
+                    //error
+                    NSLog(@"Did not add image");
+                }
+            }];
+        }
+        else{
+            //unable to upload image
+            NSLog(@"Did not save Image");
+        }
+    }];
 }
 
 @end

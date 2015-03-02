@@ -22,6 +22,8 @@
 		BF0512D31960EA0100112F77 /* city@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0512D21960EA0100112F77 /* city@2x.png */; };
 		BF087FDF19D924730043B17F /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF087FDE19D924730043B17F /* PlaceViewController.m */; };
 		BF08B3A81A92835B00062643 /* DCUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = BF08B3A71A92835B00062643 /* DCUtility.m */; };
+		BF1D5BE91AA2591300836A5C /* DCPlaceCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1D5BE81AA2591300836A5C /* DCPlaceCollectionView.m */; };
+		BF1D5BEC1AA25B2200836A5C /* DCPlaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1D5BEB1AA25B2200836A5C /* DCPlaceCollectionViewCell.m */; };
 		BF1F24B41A7451BA00534004 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1F24B31A7451BA00534004 /* Accounts.framework */; };
 		BF23A21719BA18060073F9E8 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF23A21619BA18060073F9E8 /* search@2x.png */; };
 		BF276E4B19902730006744AC /* Create3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF276E4A19902730006744AC /* Create3ViewController.m */; };
@@ -161,6 +163,10 @@
 		BF087FDE19D924730043B17F /* PlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceViewController.m; sourceTree = "<group>"; };
 		BF08B3A61A92835B00062643 /* DCUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DCUtility.h; path = DACircularProgress/DCUtility.h; sourceTree = "<group>"; };
 		BF08B3A71A92835B00062643 /* DCUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DCUtility.m; path = DACircularProgress/DCUtility.m; sourceTree = "<group>"; };
+		BF1D5BE71AA2591300836A5C /* DCPlaceCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCPlaceCollectionView.h; sourceTree = "<group>"; };
+		BF1D5BE81AA2591300836A5C /* DCPlaceCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCPlaceCollectionView.m; sourceTree = "<group>"; };
+		BF1D5BEA1AA25B2200836A5C /* DCPlaceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCPlaceCollectionViewCell.h; sourceTree = "<group>"; };
+		BF1D5BEB1AA25B2200836A5C /* DCPlaceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCPlaceCollectionViewCell.m; sourceTree = "<group>"; };
 		BF1F24B31A7451BA00534004 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		BF23A21619BA18060073F9E8 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		BF276E4919902730006744AC /* Create3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Create3ViewController.h; sourceTree = "<group>"; };
@@ -393,13 +399,6 @@
 			name = DCUberView;
 			sourceTree = "<group>";
 		};
-		BF03309F1A9E67F7003F04F8 /* DCPlaceImageTableView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = DCPlaceImageTableView;
-			sourceTree = "<group>";
-		};
 		BF04E3ED195CB4F30077C054 = {
 			isa = PBXGroup;
 			children = (
@@ -523,7 +522,7 @@
 		BF0512C8195FB28C00112F77 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BF03309F1A9E67F7003F04F8 /* DCPlaceImageTableView */,
+				BF1D5BE61AA258EC00836A5C /* DCPlaceCollectionView */,
 				BF0330931A9D0D95003F04F8 /* DCUberView */,
 				BF0330921A9D0D82003F04F8 /* DCPlaceScrollView */,
 				BFCB7F621A9941050037812A /* DCRecentSearchView */,
@@ -556,6 +555,17 @@
 				BF08B3A71A92835B00062643 /* DCUtility.m */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		BF1D5BE61AA258EC00836A5C /* DCPlaceCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				BF1D5BE71AA2591300836A5C /* DCPlaceCollectionView.h */,
+				BF1D5BE81AA2591300836A5C /* DCPlaceCollectionView.m */,
+				BF1D5BEA1AA25B2200836A5C /* DCPlaceCollectionViewCell.h */,
+				BF1D5BEB1AA25B2200836A5C /* DCPlaceCollectionViewCell.m */,
+			);
+			name = DCPlaceCollectionView;
 			sourceTree = "<group>";
 		};
 		BF2F462D19E9A1F30099D105 /* Frameworks */ = {
@@ -992,6 +1002,7 @@
 				BF9D17FB19E62DF7003C48A7 /* WDActivityIndicator.m in Sources */,
 				BF9D17F519E4E440003C48A7 /* DALabeledCircularProgressView.m in Sources */,
 				BFFDA16C1A63385A0002028D /* LocationPanel.m in Sources */,
+				BF1D5BE91AA2591300836A5C /* DCPlaceCollectionView.m in Sources */,
 				BFBA35481A4619BA007702BF /* TLYShyViewController.m in Sources */,
 				BF04E3FF195CB4F40077C054 /* AppDelegate.m in Sources */,
 				BF276E4B19902730006744AC /* Create3ViewController.m in Sources */,
@@ -1043,6 +1054,7 @@
 				BF8522CB1A6DAE6200122A59 /* DCPlaceViewController.m in Sources */,
 				BF58466919F8BD62008BF04E /* MMDrawerController.m in Sources */,
 				BF9D17F419E4E440003C48A7 /* DACircularProgressView.m in Sources */,
+				BF1D5BEC1AA25B2200836A5C /* DCPlaceCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

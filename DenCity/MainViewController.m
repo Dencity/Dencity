@@ -222,9 +222,6 @@ static const CGFloat kCellHeight = 200;
      or else an exception will be thrown
      */
     
-    //make the locationManager start updating the location
-    [locationManager getUserLocationWithInterval:20];
-    
     if (self.filter == FilterPopulation) {
         [self getNewLocationsForCurrentType];
     }
@@ -242,6 +239,9 @@ static const CGFloat kCellHeight = 200;
     self.navigationController.navigationBar.layer.masksToBounds = NO;
     
     [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    
+    //make the locationManager start updating the location
+    [locationManager getUserLocationWithInterval:20];
     
     /* Library code */
     self.shyNavBarManager.scrollView = (UIScrollView*)self.tableView;

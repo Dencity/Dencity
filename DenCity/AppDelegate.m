@@ -115,7 +115,8 @@
         [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             if (!error){
                 DCPlace *place = (DCPlace*)object;
-                [place addPerson:[PFUser currentUser]];
+                [place addPerson:[PFUser currentUser] withCompletion:^(BOOL finished) {
+                }];
                 NSLog(@"successfully added person");
             }
         }];
@@ -126,7 +127,8 @@
         [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             if (!error){
                 DCPlace *place = (DCPlace*)object;
-                [place removePerson:[PFUser currentUser]];
+                [place removePerson:[PFUser currentUser] withCompletion:^(BOOL finished) {
+                }];
                 NSLog(@"successfully removed person");
             }
         }];

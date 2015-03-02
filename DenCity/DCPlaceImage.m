@@ -10,7 +10,7 @@
 
 @implementation DCPlaceImage
 
-@dynamic imageFile, takenBy;
+@dynamic imageFile, takenBy, timeStamp;
 
 + (NSString*)parseClassName{
     return @"DCPlaceImage";
@@ -28,6 +28,12 @@
     PFFile *file = [PFFile fileWithData:data];
     place.imageFile = file;
     return place;
+}
+
+- (NSString*)stringFromTimeStamp{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"HH:mm"];
+    return [formatter stringFromDate:self.timeStamp];
 }
 
 @end

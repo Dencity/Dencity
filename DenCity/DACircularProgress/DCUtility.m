@@ -86,11 +86,11 @@
 }
 
 + (void)user:(PFUser *)user shouldEnterPlace:(DCPlace *)place{
-    [place addPerson:user];
+    [place addPerson:user withCompletion:^(BOOL finished){}];
 }
 
 + (void)user:(PFUser *)user shouldLeavePlace:(DCPlace *)place{
-    [place removePerson:user];
+    [place removePerson:user withCompletion:^(BOOL finished){}];
 }
 
 + (BOOL)containsIllegalCharacters:(NSString *)string{

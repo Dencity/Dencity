@@ -15,10 +15,12 @@ typedef void(^placeImageCompletion)(UIImage*, NSError*);
 
 @property (retain) PFFile *imageFile;
 @property (retain) PFUser *takenBy;
-
+@property (retain) NSDate *timeStamp;
 
 - (void)getImageWithBlock:(placeImageCompletion)block;
 
++(NSString*)parseClassName;
 + (DCPlaceImage*)placeImageWithImage:(UIImage*)image;
+- (NSString*)stringFromTimeStamp;
 
 @end

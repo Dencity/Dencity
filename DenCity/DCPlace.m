@@ -9,9 +9,7 @@
 #import "DCPlace.h"
 #import <Parse/PFObject+Subclass.h>
 
-@interface DCPlace (){
-    PFGeoPoint *currentLocation;
-}
+@interface DCPlace ()
 
 @end
 
@@ -51,18 +49,23 @@
     return [self.name hash] ^ [self.address hash];
 }
 
-- (void)addPerson:(PFUser*)user{
+- (void)addPerson:(PFUser*)user withCompletion:(completion)completion{
     NSMutableArray *arr = [NSMutableArray arrayWithArray:self.people];
-    [arr addObject:user.objectId];
+    [arr insertObject:user.objectId atIndex:0];
     self.people = [NSArray arrayWithArray:arr];
     self.population = [NSNumber numberWithInt:[self.population intValue] + 1];
     [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!succeeded || error) {
             [self saveEventually];
+            completion(NO);
         }
-    }];}
+        else{
+            completion(YES);
+        }
+    }];
+}
 
-- (void)removePerson:(PFUser*)user{
+- (void)removePerson:(PFUser*)user withCompletion:(completion)completion{
     NSMutableArray *arr = [NSMutableArray arrayWithArray:self.people];
     if ([arr containsObject:user.objectId]) {
         [arr removeObject:user.objectId];
@@ -71,23 +74,31 @@
         [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!succeeded || error) {
                 [self saveEventually];
+                completion(NO);
+            }
+            else{
+                completion(YES);
             }
         }];
     }
 }
 
-- (void)addComment:(DCPlaceComment *)comment{
+- (void)addComment:(DCPlaceComment *)comment withCompletion:(completion)completion{
     NSMutableArray *arr = [NSMutableArray arrayWithArray:self.comments];
-    [arr addObject:comment.objectId];
+    [arr insertObject:comment.objectId atIndex:0];
     self.comments = [NSArray arrayWithArray:arr];
     [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!succeeded) {
             [self saveEventually];
+            completion(NO);
+        }
+        else{
+            completion(YES);
         }
     }];
 }
 
-- (void)removeComment:(DCPlaceComment *)comment{
+- (void)removeComment:(DCPlaceComment *)comment withCompletion:(completion)completion{
     NSMutableArray *arr = [NSMutableArray arrayWithArray:self.comments];
     if ([arr containsObject:comment.objectId]) {
         [arr removeObject:comment.objectId];
@@ -96,22 +107,30 @@
     [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!succeeded) {
             [self saveEventually];
+            completion(NO);
+        }
+        else{
+            completion(YES);
         }
     }];
 }
 
-- (void)addImage:(DCPlaceImage *)image{
+- (void)addImage:(DCPlaceImage *)image withCompletion:(completion)completion{
     NSMutableArray *arr = [NSMutableArray arrayWithArray:self.images];
-    [arr addObject:image.objectId];
+    [arr insertObject:image.objectId atIndex:0];
     self.images = [NSArray arrayWithArray:arr];
     [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!succeeded) {
             [self saveEventually];
+            completion(NO);
+        }
+        else{
+            completion(YES);
         }
     }];
 }
 
-- (void)removeImage:(DCPlaceImage *)image{
+- (void)removeImage:(DCPlaceImage *)image withCompletion:(completion)completion{
     NSMutableArray *arr = [NSMutableArray arrayWithArray:self.images];
     if ([arr containsObject:image.objectId]) {
         [arr removeObject:image.objectId];
@@ -120,6 +139,10 @@
     [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!succeeded) {
             [self saveEventually];
+            completion(NO);
+        }
+        else{
+            completion(YES);
         }
     }];
 }

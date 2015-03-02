@@ -23,6 +23,8 @@ PODS:
   - Bolts (1.1.3)
   - CWStatusBarNotification (2.2.2)
   - Doppelganger (1.3)
+  - KRLCollectionViewGridLayout (0.2.0)
+  - LLSimpleCamera (2.1.1)
   - pop (1.0.7)
   - RJImageLoader (0.2.0)
   - UberKit (0.1.0)
@@ -32,6 +34,8 @@ DEPENDENCIES:
   - Bolts
   - CWStatusBarNotification (~> 2.2.2)
   - Doppelganger
+  - KRLCollectionViewGridLayout
+  - LLSimpleCamera (~> 2.1)
   - pop (~> 1.0)
   - RJImageLoader
   - UberKit
@@ -41,6 +45,8 @@ SPEC CHECKSUMS:
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   CWStatusBarNotification: 7e43716355830c26124eae9b91c4434dfa2a6a73
   Doppelganger: 5f8ece005622fdcb01fe3e56e0ed7cad2fc4d5cb
+  KRLCollectionViewGridLayout: bcacbdfe7b784e3d2a84c70e8f68dd65e297db57
+  LLSimpleCamera: 6674422a27f2e7b5dc452cf404eb48a581ff8099
   pop: 2f14a1ea61339767af9e66741b418c831b3844df
   RJImageLoader: 285a2db6ff2b905bd880b8219a2cbe5054f86411
   UberKit: 2e45c6e9de9f5e9847ad9248bb8105bafd482724

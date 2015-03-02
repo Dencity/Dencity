@@ -66,6 +66,18 @@
 #define COCOAPODS_VERSION_MINOR_Doppelganger 3
 #define COCOAPODS_VERSION_PATCH_Doppelganger 0
 
+// KRLCollectionViewGridLayout
+#define COCOAPODS_POD_AVAILABLE_KRLCollectionViewGridLayout
+#define COCOAPODS_VERSION_MAJOR_KRLCollectionViewGridLayout 0
+#define COCOAPODS_VERSION_MINOR_KRLCollectionViewGridLayout 2
+#define COCOAPODS_VERSION_PATCH_KRLCollectionViewGridLayout 0
+
+// LLSimpleCamera
+#define COCOAPODS_POD_AVAILABLE_LLSimpleCamera
+#define COCOAPODS_VERSION_MAJOR_LLSimpleCamera 2
+#define COCOAPODS_VERSION_MINOR_LLSimpleCamera 1
+#define COCOAPODS_VERSION_PATCH_LLSimpleCamera 1
+
 // RJImageLoader
 #define COCOAPODS_POD_AVAILABLE_RJImageLoader
 #define COCOAPODS_VERSION_MAJOR_RJImageLoader 0

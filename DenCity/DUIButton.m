@@ -32,12 +32,23 @@
     [super setHighlighted:YES];
     if (highlighted) {
         self.titleLabel.font = [UIFont systemFontOfSize:self.fontSize - 2];
+        CGRect rect = self.imageView.frame;
+        rect.origin.x -=5;
+        rect.origin.y -=5;
+        rect.size.width += 10;
+        rect.size.height += 10;
+        [UIView animateWithDuration:.3 animations:^{self.imageView.frame = rect;}];
         if (self.whiteValue != 100) {
             self.backgroundColor = [UIColor colorWithWhite:self.whiteValue - .1 alpha:.9f];
         }
     }
     else{
         self.titleLabel.font = [UIFont systemFontOfSize:self.fontSize];
+        CGRect rect = self.imageView.frame;
+        rect.origin.x +=5;
+        rect.origin.y +=5;
+        rect.size.width -= 10;
+        rect.size.height -= 10;
         if (self.whiteValue != 100) {
             self.backgroundColor = [UIColor colorWithWhite:self.whiteValue alpha:.9f];
         }
@@ -48,12 +59,23 @@
     [super setSelected:selected];
     if (selected) {
         self.titleLabel.font = [UIFont systemFontOfSize:self.fontSize - 2];
+        CGRect rect = self.imageView.frame;
+        rect.origin.x -=5;
+        rect.origin.y -=5;
+        rect.size.width += 10;
+        rect.size.height += 10;
+        [UIView animateWithDuration:.3 animations:^{self.imageView.frame = rect;}];
         if (self.whiteValue != 100) {
             self.backgroundColor = [UIColor colorWithWhite:self.whiteValue - .1 alpha:.9f];
         }
     }
     else{
         self.titleLabel.font = [UIFont systemFontOfSize:self.fontSize];
+        CGRect rect = self.imageView.frame;
+        rect.origin.x +=5;
+        rect.origin.y +=5;
+        rect.size.width -= 10;
+        rect.size.height -= 10;
         if (self.whiteValue != 100) {
             self.backgroundColor = [UIColor colorWithWhite:self.whiteValue alpha:.9f];
         }

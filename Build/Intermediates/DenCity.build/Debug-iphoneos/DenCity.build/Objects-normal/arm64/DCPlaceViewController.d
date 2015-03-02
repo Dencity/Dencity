@@ -43,4 +43,5 @@ dependencies: \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPopulationPlaceCell.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/PersonTableViewCell.h \
   /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlaceScrollView.h \
-  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCUberView.h
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCUberView.h \
+  /Users/dylanhumphrey/Desktop/Drive/XCode/DenCity/DenCity/DCPlaceCollectionView.h
